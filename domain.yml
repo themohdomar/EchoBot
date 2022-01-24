@@ -1,0 +1,103 @@
+version: "2.0"
+
+intents:
+  - greet_hru
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - bot_search
+  - urdu_hi
+  - urdu_hru
+  - timesheet_req
+  - resume_req_bio
+  - resume_req_exp
+  - resume_req_skills
+  - resume_req_contact
+
+
+entities:
+  - Name
+  - PERSON
+  - ORG
+  - PRODUCT
+  - LOC
+
+slots:
+  PERSON:
+    type: text
+
+  LOC:
+    type: text
+
+responses:
+  utter_greet:
+  - text: "Hey! Im O-bot!"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, What can I do for you?"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Omar."
+
+  utter_neg_search:
+  - text: "Could not find what you were looking for"
+
+  utter_pos_result:
+  - text: "Here are the results"
+
+  utter_urdu_hi:
+  - text: "Walaikumassalam"
+
+  utter_rep_hru:
+  - text: "Alhamdulillah, Tume kaise hin?"
+
+  utter_ask_chai:
+  - text: "Aao shaa dum aur chaa maringey"
+
+  utter_run_timesheetbot:
+  - text: "Running TimesheetBot"
+
+  utter_resume_req_bio:
+  - text: "Mohammed Omar is a confident high performing Software Engineer and dynamic solutions expert of technical challenges, with a 3+
+  years of in Software Development over Web and Cloud platforms in Big Data technologies like Hadoop, Hive, Kafka, etc. Natively experienced 
+  in Python, Java, MySQL around AGILE environments. Commended for effective resource management reducing several costs and process improvements.
+  Applauded for being an Out-of-the-box code builder with consistent performer confident at operational leadership with sound judgement."
+
+  utter_resume_req_exp:
+  - text: "Mohammed Omar has 3+ years of experience over Web and Cloud platforms in Big Data technologies around AGILE environments. He is
+  also an enthusiastic AI Engineer learning with IBM, building chatbots with Rasa and TensorFlow, UI/UX development in Flutter by Google and
+  Web scrapper bots on Instagram with Selenium."
+
+  utter_resume_req_skills:
+  - text: "Skilled in Python, Java, MySQL in Big Data technologies like Hadoop, Hive, Kafka, etc. around Web and Cloud development.
+  Personal learning knowledge expands over UI/UX Web development using Flutter, Javascript, and AI development through NLP models with Rasa,
+  TensorFlow, Selenium and IBM Watson."
+
+  utter_resume_req_contact:
+  - text: "Phone Number : +971 56 552 6765
+  Email : reachomarindxb@gmail.com
+  LinkedIn : www.linkedin.com/in/themohdomar
+  Website: www.themohdomar.wordpress.com"
+
+
+actions:
+  - action_prompt
+  - action_fill_timesheet
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

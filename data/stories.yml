@@ -1,0 +1,77 @@
+version: "2.0"
+
+stories:
+
+- story: happy path 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet_hru
+  - action: utter_happy
+  - intent: mood_great
+  - action: utter_happy
+
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet_hru
+  - action: utter_happy
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: greet_hru
+  - action: utter_happy
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: search path
+  steps:
+  - intent: bot_search
+  - action: action_prompt
+
+- story: urdu_convo
+  steps:
+  - intent: urdu_hi
+  - action: utter_urdu_hi
+  - intent: urdu_hru
+  - action: utter_rep_hru
+  - action: utter_ask_chai
+
+- story: timesheet
+  steps:
+  - intent: timesheet_req
+  - action: utter_run_timesheetbot
+  - action: action_fill_timesheet
+
+- story: resume_req_bio_path
+  steps:
+  - intent: resume_req_bio
+  - action: utter_resume_req_bio
+
+- story: resume_req_exp_path
+  steps:
+  - intent: resume_req_exp
+  - action: utter_resume_req_exp
+
+- story: resume_req_skills_path
+  steps:
+  - intent: resume_req_skills
+  - action: utter_resume_req_skills
+
+- story: resume_req_contact_path
+  steps:
+  - intent: resume_req_contact
+  - action: utter_resume_req_contact
+

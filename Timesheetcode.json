@@ -1,0 +1,23 @@
+{	"Multiple Projects":"Y",
+	"Project count": "2",
+	"1" :
+	{"Hours": "4.25",
+ 		"Time Reporting Code": "RG - Regular",
+ 		"Business Unit PC": "QUGBL",
+ 		"Project ID": "CBPS2021",
+ 		"Activity ID": "TIME",
+ 		"Resourse Type": "GLBIT",
+ 		"Resource Category": 670,
+ 		"Resource Sub-Category": 663
+	},
+	"2" :
+	{"Hours": "4.25",
+ 		"Time Reporting Code": "RG - Regular",
+ 		"Business Unit PC": "QUGBL",
+ 		"Project ID": "CDRUPG20",
+ 		"Activity ID": "TIME",
+ 		"Resourse Type": "GLBIT",
+ 		"Resource Category": 670,
+ 		"Resource Sub-Category": 663
+	}
+}
