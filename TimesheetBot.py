@@ -1,3 +1,11 @@
+'''
+    Web Scrawller to Fill in the hours worked upon
+     weekly over the Firm's Timesheet portal for billing
+     It is compatible to work with Multiple Project codes
+     and custom hourly billing to be declared over a json
+     input file.
+'''
+
 import json
 from time import sleep
 from selenium import webdriver, common
@@ -10,7 +18,9 @@ class Timesheetbot():
     def __init__(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
         self.driver.get(
-            "https://pshr.quintiles.net/psp/h92prd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MSS_EE_SRCH_PRD.GBL?FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_TIME_REPORTING.HC_RECORD_TIME.HC_TL_SS_JOB_SRCH_EE_GBL&IsFolder=false&IgnoreParamTempl=FolderPath%2CIsFolder&languageCd=ENG")
+            "https://pshr.quintiles.net/psp/h92prd/EMPLOYEE/HRMS/c/ROLE_EMPLOYEE.TL_MSS_EE_SRCH_PRD.GBL?"
+            "FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_TIME_REPORTING.HC_RECORD_TIME.HC_"
+            "TL_SS_JOB_SRCH_EE_GBL&IsFolder=false&IgnoreParamTempl=FolderPath%2CIsFolder&languageCd=ENG")
         # self.driver.maximize_window()
         print("Success")
 
@@ -20,7 +30,6 @@ class Timesheetbot():
                 data = json.load(f)
                 print("Timesheet code JSON loaded")
                 self.data = data
-                # print(data)
         except:
             print("Timesheet code JSON does not exist")
             exit(1)
@@ -30,7 +39,8 @@ class Timesheetbot():
         print("Projects :", pro_count)
         for i in range(pro_count):
             self.driver.find_element_by_xpath(
-                "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[2]/td[17]/div/a").click()
+                "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table"
+                "/tbody/tr[2]/td/table/tbody/tr[2]/td[17]/div/a").click()
             sleep(2)
         print("Columns added")
 
@@ -40,7 +50,8 @@ class Timesheetbot():
         for row in range(3):
             try:
                 entry = self.driver.find_element_by_xpath(
-                    "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
+                    "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table"
+                    "/tbody/tr[2]/td/table/tbody/tr[" + str(
                         row + 2) + "]/td[11]/div/span")
                 if entry:
                     if entry.text == 'ADMN0000':
@@ -48,7 +59,8 @@ class Timesheetbot():
                         skip_r += 1
                         for col in range(3, 7):
                             if self.driver.find_element_by_xpath(
-                                    "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
+                                    "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]"
+                                    "/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
                                             row + 2) + "]/td[" + str(col) + "]/div/input").values == "8.50":
                                 skip_c.append(col)
             except common.exceptions.NoSuchElementException:
@@ -60,20 +72,19 @@ class Timesheetbot():
     def enter_time(self, data, r, c):
 
         for row in range(int(data['Project count'])):
-            # print("Row :",row)
-            # Entering hours
             for i in range(3, 16):
-                #sleep(3)
                 if i == 8:
                     None
                 elif i is 9:
                     self.driver.find_element_by_xpath(
-                        "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
+                        "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]"
+                        "/table/tbody/tr[2]/td/table/tbody/tr[" + str(
                             row + r) + "]/td[9]/div/select/option[text()='" + data[str(row + 1)][
                             'Time Reporting Code'] + "']").click()
                 else:
                     input_tab = self.driver.find_element_by_xpath(
-                        "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
+                        "/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[10]"
+                        "/td[2]/div[1]/table/tbody/tr[2]/td/table/tbody/tr[" + str(
                             row + r) + "]/td[" + str(i) + "]/div/input")
                     # input_tab.clear()
                     if i is 10:
@@ -96,7 +107,9 @@ class Timesheetbot():
 
     def submit(self):
 
-        self.driver.find_element_by_xpath("/html/body/form/div[4]/table/tbody/tr/td/div/table/tbody/tr[12]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/div/a/span/input").click()
+        self.driver.find_element_by_xpath("/html/body/form/div[4]/table/tbody/tr/td/div/table"
+                                          "/tbody/tr[12]/td[2]/div/table/tbody/tr[2]/td/table"
+                                          "/tbody/tr[2]/td[2]/div/a/span/input").click()
         print("Timesheet Submitted")
         sleep(3)
 
@@ -112,12 +125,8 @@ class Timesheetbot():
             self.multi_project_check(self.data)
 
         row, col = self.holiday_checks()
-        ##sleep(10)
+        sleep(10)
         self.enter_time(self.data, row, col)
         self.submit()
         self.driver.close()
-
-# Bot = Timesheetbot()
-# Bot.fill_time()
-
 

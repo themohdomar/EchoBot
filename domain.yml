@@ -9,7 +9,9 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - bot_search
+  - bot_search_person
+  - bot_search_gpe
+  - bot_search_org
   - urdu_hi
   - urdu_hru
   - timesheet_req
@@ -20,18 +22,20 @@ intents:
 
 
 entities:
-  - Name
   - PERSON
   - ORG
-  - PRODUCT
-  - LOC
+  - GPE
 
 slots:
   PERSON:
     type: text
-
-  LOC:
+  ORG:
     type: text
+  GPE:
+    type: text
+
+
+
 
 responses:
   utter_greet:
@@ -51,7 +55,7 @@ responses:
   - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Omar."
+  - text: "I am O-bot, a chatbot, powered by Omar."
 
   utter_neg_search:
   - text: "Could not find what you were looking for"
@@ -77,6 +81,9 @@ responses:
   in Python, Java, MySQL around AGILE environments. Commended for effective resource management reducing several costs and process improvements.
   Applauded for being an Out-of-the-box code builder with consistent performer confident at operational leadership with sound judgement."
 
+  utter_resume_req_web:
+  - text: "Please Check my resume online on the new Chrome window opened"
+
   utter_resume_req_exp:
   - text: "Mohammed Omar has 3+ years of experience over Web and Cloud platforms in Big Data technologies around AGILE environments. He is
   also an enthusiastic AI Engineer learning with IBM, building chatbots with Rasa and TensorFlow, UI/UX development in Flutter by Google and
@@ -97,6 +104,7 @@ responses:
 actions:
   - action_prompt
   - action_fill_timesheet
+  - action_open_resume
 
 session_config:
   session_expiration_time: 60

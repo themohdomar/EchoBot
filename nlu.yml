@@ -1,0 +1,206 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: greet_hru
+  examples: |
+    - How are you?
+    - Wassup?
+    - What is up?
+    - Waddup?
+
+
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - What are you?
+    - are you a bot?
+    - Are you a chatbot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: bot_search_person
+  examples: |
+    - Who was [Mahatma Gandhi](PERSON)
+    - Who is [Enzo Ferrari](PERSON)?
+    - Who was [Hitler](PERSON)?
+    - [Sachin Tendulkar](PERSON) who
+    - who is [abraham lincoln](PERSON)
+    - WHO IS [STEVE JOBS](PERSON)
+    - WHo is [arnold](PERSON)?
+    - Who is [Peter Parker](PERSON)
+    - Who is [Katrina Kaif](PERSON)?
+    - Who is [Malala Yousafzai](PERSON)?
+    - [Benazir Bhutto](PERSON)?
+    - Who is [Shahnaz Begum](PERSON)?
+
+- intent: bot_search_gpe
+  examples: |
+    - Where is [Dubai](GPE)?
+    - Where is [Bangalore](GPE) location?
+    - Do you know where [Spain](GPE) is?
+    - [Sharjah](GPE) Where is?
+    - Where is the [Philipines](GPE) located?
+    - Where can I find [Africa](GPE)?
+    - Where is [Mississippi](GPE)
+    - Where [bangkok]
+    
+- intent: bot_search_org
+  examples: |
+    - What is [Microsoft](ORG)?
+    - What is [Google](ORG)?
+    - Where is [ADNOC](ORG)?
+    - What is [Apple Inc](ORG)?
+    - What is [Nokia](ORG)
+    - What is [Lamborghini](ORG)
+    - What is [Gucci](ORG)
+    - What is [Richard Mille](ORG)
+    - [Rolex](ORG) what?
+    - Is [samsung](ORG) a firm?
+    - What does [Nike](ORG) do?
+    - Company [3M](ORG)
+    - Company [Indeed](ORG)
+
+- intent: urdu_hi
+  examples: |
+    - Assalamualaikum 
+    - Assalamualaikum wa rahmathulla
+    - ASWK
+
+- intent: urdu_hru
+  examples: |
+    - Kya khissa?
+    - Kya haal chaal?
+    - Kaise hin?
+    - Kaisa hai?
+
+- intent: timesheet_req
+  examples: |
+    - Submit Timesheet
+    - Please fill in my timesheet
+    - Fill timesheet
+    - Run TimesheetBot
+    - Submit my timesheet
+    - Run Timesheet
+
+- intent: resume_req_bio
+  examples: |
+    - Tell me more about Omar?
+    - Who is Omar?
+    - Who Omar?
+    - Temme about Omar
+    - About Omar
+    - Omar who?
+
+
+- intent: resume_req_exp
+  examples: |
+    - How much of experience does he hold?
+    - How much of Experience?
+    - How many years of experience does Omar hold?
+    - Years of experience?
+
+- intent: resume_req_skills
+  examples: |
+    - What is the skillset?
+    - What are the software skills that Omar possesses?
+    - What does Omar know?
+    - What does he know?
+    - What all do you know?
+    - What are the programming languages Omar knows?
+    - What skills does Omar know?
+
+- intent: resume_req_contact
+  examples: |
+    - How do I contact him?
+    - Contact Omar
+    - Contact details
+    - Contact Number
+    - Email
+    - How do I connect?
+    - How to contact Omar?
+    
+
