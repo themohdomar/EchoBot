@@ -24,6 +24,11 @@ stories:
   - intent: affirm
   - action: utter_happy
 
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
 - story: sad path 2
   steps:
   - intent: greet
@@ -36,9 +41,19 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-- story: search path
+- story: search path 1
   steps:
-  - intent: bot_search
+  - intent: bot_search_person
+  - action: action_prompt
+
+- story: search path 2
+  steps:
+  - intent: bot_search_gpe
+  - action: action_prompt
+
+- story: search path 3
+  steps:
+  - intent: bot_search_org
   - action: action_prompt
 
 - story: urdu_convo
@@ -59,19 +74,24 @@ stories:
   steps:
   - intent: resume_req_bio
   - action: utter_resume_req_bio
+  - action: action_open_resume
+  - action: utter_resume_req_web
 
 - story: resume_req_exp_path
   steps:
   - intent: resume_req_exp
   - action: utter_resume_req_exp
+  - action: utter_resume_req_web
 
 - story: resume_req_skills_path
   steps:
   - intent: resume_req_skills
   - action: utter_resume_req_skills
+  - action: utter_resume_req_web
 
 - story: resume_req_contact_path
   steps:
   - intent: resume_req_contact
   - action: utter_resume_req_contact
+  - action: utter_resume_req_web
 

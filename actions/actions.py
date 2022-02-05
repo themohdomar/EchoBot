@@ -14,9 +14,6 @@ from rasa_sdk.executor import CollectingDispatcher
 import TimesheetBot
 import GoogleSearchBot
 
-
-#
-#
 class ActionPrompt(Action):
 
     def name(self) -> Text:
@@ -25,15 +22,29 @@ class ActionPrompt(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        entity = tracker.get_slot("PERSON")
+        print("Tracker OBJECT",tracker)
+        slot_list = ["PERSON","ORG","GPE"]
+        entity = None
+        for slot in slot_list:
+            # print("Slot :+", slot)
+            if tracker.get_slot(slot):
+                entity = tracker.get_slot(slot)
+                print("\n\nSlot :",slot)
+                print("Entity :", entity)
+
+
         if entity:
+            print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            # print("Slot :+",slot)
+            # print("\n\n")
             GoogleSearchBot.SearchBot(entity)
+
             print("Browser not to close")
             dispatcher.utter_message(text="Here is what I found")
         else:
             dispatcher.utter_message(text="Entity not found.... Maybe entity is not a PERSON")
 
-        print("Entity :+", entity)
+
         dispatcher.utter_message(text="What else can I do for you?")
 
         return [AllSlotsReset()]
@@ -55,3 +66,20 @@ class ActionFillTimesheet(Action):
 
             dispatcher.utter_message(text="Timesheet Entry done")
             dispatcher.utter_message(text="What else can I help you with?")
+
+            return [AllSlotsReset()]
+
+class ActionOpenResume(Action):
+
+    def name(self)-> Text:
+        return "action_open_resume"
+
+    def run(self,dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("Opening Resume")
+        GoogleSearchBot.OpenResume()
+        print("Browser not to close")
+
+        return [AllSlotsReset()]
+
